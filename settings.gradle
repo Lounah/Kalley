@@ -1,1 +1,1 @@
-include ':app'
+include Modules.app, Modules.coreSip, Modules.architecture, Modules.featureAuth, Modules.coreStorage
