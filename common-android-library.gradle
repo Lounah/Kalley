@@ -1,0 +1,49 @@
+apply plugin: "com.android.library"
+apply plugin: "kotlin-android"
+apply plugin: "kotlin-android-extensions"
+apply from: "$rootDir/secretconfig.gradle"
+
+android {
+    compileSdkVersion Versions.compileSdk
+
+    defaultConfig {
+        minSdkVersion Versions.minSdk
+        targetSdkVersion Versions.targetSdk
+        versionCode Releases.versionCode
+        versionName Releases.versionName
+        resConfig "en"
+        vectorDrawables.useSupportLibrary = true
+        renderscriptTargetApi Versions.targetSdk
+        renderscriptSupportModeEnabled true
+    }
+
+    androidExtensions {
+        experimental = true
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled true
+        }
+        debug {
+            ext.alwaysUpdateBuildId = false
+        }
+    }
+
+    signingConfigs {
+        config {
+            keyAlias signConfigs.keyAlias
+            keyPassword signConfigs.keyPassword
+            storeFile file(signConfigs.storeFile)
+            storePassword signConfigs.storePassword
+        }
+    }
+
+    testOptions {
+        unitTests.returnDefaultValues = true
+    }
+}
+
+dependencies {
+    implementation Libraries.kotlin
+}
