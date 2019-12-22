@@ -10,14 +10,14 @@ import com.lounah.kalley.feature.feature_auth.ui.signin.AuthAction.*
 import com.lounah.kalley.feature.feature_auth.ui.signin.sideeff.SendAuthSideEff
 import com.lounah.kalley.feature.feature_auth.ui.signin.sideeff.ValidateCredentialsSideEff
 
-internal class AuthPresenter(
-    private val usernameValidator: (String) -> Boolean = UsernameValidator(),
-    private val passwordValidator: (String) -> Boolean = PasswordValidator()
+internal class SignInPresenter(
+    private val usernameValidator: (String) -> Boolean,
+    private val passwordValidator: (String) -> Boolean
 ) : ReduxPresenter(AuthState()) {
 
     override val sideEffects: List<SideEff> get() = listOf(
         SendAuthSideEff(),
-        ValidateCredentialsSideEff(UsernameValidator(), PasswordValidator())
+        ValidateCredentialsSideEff(usernameValidator, passwordValidator)
     )
 
     override val reducer: ReduxReducer get() = BaseReducer<AuthState> { state, action ->
