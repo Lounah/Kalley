@@ -8,8 +8,7 @@ typealias SideEff = SideEffect<ReduxState, ReduxAction>
 
 interface ReduxAction
 interface ReduxState
-interface ReduxEffect : ReduxState,
-    ReduxAction
+interface ReduxEffect : ReduxState, ReduxAction
 
 @Suppress("FunctionName")
 inline fun <reified State : ReduxState> BaseReducer(

@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:paddingStart="20dp"
+        android:layout_height="56dp">
+
+        <ImageView
+            android:id="@+id/close"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:src="@drawable/ic_close_black_24dp"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:paddingStart="54dp"
+            android:text="@string/auth"
+            android:textColor="@color/black_soft"
+            android:textSize="24sp"
+            android:textStyle="bold"/>
+
+    </FrameLayout>
+
+    <LinearLayout
+        android:id="@+id/inputContainer"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:orientation="vertical"
+        android:padding="16dp"
+        tools:ignore="UselessParent">
+
+        <EditText
+            android:id="@+id/username"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:backgroundTint="@color/blue_accent"
+            android:inputType="textPersonName"
+            android:paddingTop="8dp"
+            android:hint="@string/username"
+            android:nextFocusForward="@id/password"
+            android:textColorHint="@color/blue_flatten"
+            android:textColor="@color/black_soft"
+            android:textSize="21sp"
+            android:importantForAutofill="no" />
+
+        <EditText
+            android:id="@+id/password"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:backgroundTint="@color/blue_accent"
+            android:inputType="textPassword"
+            android:layout_marginTop="16dp"
+            android:paddingTop="8dp"
+            android:hint="@string/password"
+            android:textColor="@color/black_soft"
+            android:textSize="21sp"
+            android:textColorHint="@color/blue_flatten"
+            android:importantForAutofill="no" />
+
+        <Button
+            android:id="@+id/signIn"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="24dp"
+            app:cornerRadius="4dp"
+            android:textStyle="bold"
+            android:text="@string/log_in"
+            android:textColor="@color/white"
+            android:background="@drawable/bg_signin_button"/>
+
+    </LinearLayout>
+</FrameLayout>

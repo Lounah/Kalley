@@ -65,6 +65,11 @@ android {
 }
 
 dependencies {
+    implementation project(Modules.coreDi)
+    implementation project(Modules.coreStorage)
+    implementation project(Modules.coreSip)
+    implementation project(Modules.featureAuth)
+    implementation project(Modules.architecture)
 
     implementation Libraries.kotlin
     implementation Libraries.retrofit

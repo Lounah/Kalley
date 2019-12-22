@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">feature-auth</string>
+    <string name="username">Имя пользователя</string>
+    <string name="password">Пароль</string>
+    <string name="log_in">Войти</string>
+    <string name="auth">Авторизация</string>
 </resources>

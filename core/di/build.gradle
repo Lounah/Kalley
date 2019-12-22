@@ -1,0 +1,2 @@
+apply from: "$rootDir/common-kotlin-library.gradle"
+apply plugin: "kotlin-kapt"

@@ -6,6 +6,7 @@ object Modules {
     const val app = ":app"
     const val coreSip = ":core:sip"
     const val coreStorage = ":core:storage"
+    const val coreDi = ":core:di"
     const val featureAuth = ":feature:feature-auth"
     const val architecture = ":core:architecture"
 }
@@ -33,7 +34,7 @@ object Versions {
     const val retrofit = "2.6.1"
     const val gson = "2.8.6"
     const val okhttp = "4.2.1"
-    const val constraintLayout = "2.0.0-alpha4"
+    const val constraintLayout = "2.0.0-beta4"
 }
 
 object Libraries {
