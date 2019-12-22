@@ -22,5 +22,8 @@ inline fun <reified State : ReduxState, reified Effect : ReduxEffect> ReduxPrese
     crossinline onEffect: (Effect) -> Unit = {}
 ) = currentState()
     .observeOn(AndroidSchedulers.mainThread())
-    .subscribeTo(onNext = { if (it is Effect) onEffect(it) else onStateChanged(it as State) })
+    .subscribeTo(onNext = {
+        if (it is Effect) onEffect(it)
+        else onStateChanged(it as State)
+    })
     .disposeOnDestroy(target.lifecycle)

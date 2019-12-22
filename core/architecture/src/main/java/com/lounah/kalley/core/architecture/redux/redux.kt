@@ -14,6 +14,8 @@ interface ReduxEffect : ReduxState, ReduxAction
 inline fun <reified State : ReduxState> BaseReducer(
     noinline extender: (State, ReduxAction) -> State
 ): ReduxReducer = { state, action ->
-    if (action is ReduxEffect) state
-    else extender(state as State, action)
+    when {
+        action is ReduxEffect -> action
+        else -> extender(state as State, action)
+    }
 }

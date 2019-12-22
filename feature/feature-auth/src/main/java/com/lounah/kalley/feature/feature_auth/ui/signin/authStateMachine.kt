@@ -8,19 +8,23 @@ import com.lounah.kalley.core.architecture.redux.ReduxState
 
 internal sealed class AuthAction : ReduxAction {
     class OnSignInClicked : AuthAction()
-    class SendAuth : AuthAction()
+    class SendAuthStarted : AuthAction()
     data class OnUsernameChanged(val username: String) : AuthAction()
     data class OnPasswordChanged(val password: String) : AuthAction()
 }
 
 internal sealed class AuthEffect : ReduxEffect {
-    class ShowAuthError(val message: String) : AuthEffect()
+    class ShowAuthError : AuthEffect()
     class OnAuthSuccess : AuthEffect()
-    class ProceedAuthButtonStateChanged(val enabled: Boolean) : AuthEffect()
+    data class AuthButtonStateChanged(
+        val usernameIsValid: Boolean,
+        val passwordIsValid: Boolean,
+        val enabled: Boolean = usernameIsValid && passwordIsValid
+    ) : AuthEffect()
 }
 
 internal data class AuthState(
-    val usernameHasErrors: Boolean = false,
-    val passwordHasError: Boolean = false,
+    val username: String = "",
+    val password: String = "",
     val isLoading: Boolean = false
 ) : ReduxState

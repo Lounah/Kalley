@@ -14,7 +14,7 @@ abstract class ReduxPresenter(private val initialState: ReduxState) {
     private val input: Relay<ReduxAction> = PublishRelay.create()
 
     fun currentState(): Observable<ReduxState>
-            = input.reduxStore(initialState, sideEffects, reducer)
+            = input.reduxStore2(initialState, sideEffects, reducer)
 
     fun accept(action: ReduxAction) = input.accept(action)
 }

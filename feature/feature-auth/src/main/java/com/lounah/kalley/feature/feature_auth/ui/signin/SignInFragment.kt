@@ -2,6 +2,9 @@ package com.lounah.kalley.feature.feature_auth.ui.signin
 
 import android.os.Bundle
 import android.view.View
+import android.view.View.GONE
+import android.view.View.VISIBLE
+import android.widget.Toast
 import com.lounah.kalley.core.architecture.base.BaseFragment
 import com.lounah.kalley.core.architecture.extensions.onTextChange
 import com.lounah.kalley.core.architecture.redux.bind
@@ -29,12 +32,14 @@ internal class SignInFragment : BaseFragment(R.layout.fragment_signin) {
     }
 
     private fun handleStateChange(state: AuthState) {
-
+        progressBar.visibility = if (state.isLoading) VISIBLE else GONE
     }
 
     private fun handleEffect(effect: AuthEffect) {
         when (effect) {
-            is ProceedAuthButtonStateChanged -> signIn.isEnabled = effect.enabled
+            is AuthButtonStateChanged -> signIn.isEnabled = effect.enabled
+            is OnAuthSuccess -> Toast.makeText(context, "success", Toast.LENGTH_SHORT).show()
+            is ShowAuthError -> Toast.makeText(context, "error", Toast.LENGTH_SHORT).show()
         }
     }
 }

@@ -11,5 +11,5 @@ internal class PasswordValidator(
 ) : RegexpValidator()
 
 internal class UsernameValidator(
-    override val regexp: Regex = "^[a-zA-Z0-9._-]{3,}\$".toRegex()
+    override val regexp: Regex = "^[a-zA-Z0-9._-]{5,}\$".toRegex()
 ) : RegexpValidator()

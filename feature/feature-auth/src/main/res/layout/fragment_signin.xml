@@ -1,21 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    android:layout_height="match_parent">
 
     <FrameLayout
         android:layout_width="match_parent"
-        android:paddingStart="20dp"
-        android:layout_height="56dp">
+        android:layout_height="56dp"
+        android:paddingStart="20dp">
 
         <ImageView
             android:id="@+id/close"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_vertical"
-            android:src="@drawable/ic_close_black_24dp"/>
+            android:src="@drawable/ic_close_black_24dp" />
 
         <TextView
             android:layout_width="wrap_content"
@@ -25,9 +25,17 @@
             android:text="@string/auth"
             android:textColor="@color/black_soft"
             android:textSize="24sp"
-            android:textStyle="bold"/>
+            android:textStyle="bold" />
 
     </FrameLayout>
+
+    <ProgressBar
+        android:id="@+id/progressBar"
+        style="@style/Widget.AppCompat.ProgressBar.Horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="56dp"
+        android:indeterminate="true" />
 
     <LinearLayout
         android:id="@+id/inputContainer"
@@ -43,39 +51,40 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:backgroundTint="@color/blue_accent"
-            android:inputType="textPersonName"
-            android:paddingTop="8dp"
             android:hint="@string/username"
+            android:importantForAutofill="no"
+            android:inputType="textPersonName"
             android:nextFocusForward="@id/password"
-            android:textColorHint="@color/blue_flatten"
+            android:paddingTop="8dp"
             android:textColor="@color/black_soft"
-            android:textSize="21sp"
-            android:importantForAutofill="no" />
+            android:textColorHint="@color/blue_flatten"
+            android:textSize="21sp" />
 
         <EditText
             android:id="@+id/password"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:backgroundTint="@color/blue_accent"
-            android:inputType="textPassword"
             android:layout_marginTop="16dp"
-            android:paddingTop="8dp"
+            android:backgroundTint="@color/blue_accent"
             android:hint="@string/password"
+            android:importantForAutofill="no"
+            android:inputType="textPassword"
+            android:paddingTop="8dp"
             android:textColor="@color/black_soft"
-            android:textSize="21sp"
             android:textColorHint="@color/blue_flatten"
-            android:importantForAutofill="no" />
+            android:textSize="21sp" />
 
         <Button
             android:id="@+id/signIn"
+            style="@style/Widget.AppCompat.Button.Borderless.Colored"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="56dp"
             android:layout_marginTop="24dp"
-            app:cornerRadius="4dp"
-            android:textStyle="bold"
+            android:enabled="false"
             android:text="@string/log_in"
-            android:textColor="@color/white"
-            android:background="@drawable/bg_signin_button"/>
+            android:textColor="@color/auth_button"
+            android:textStyle="bold"
+            app:cornerRadius="4dp" />
 
     </LinearLayout>
 </FrameLayout>

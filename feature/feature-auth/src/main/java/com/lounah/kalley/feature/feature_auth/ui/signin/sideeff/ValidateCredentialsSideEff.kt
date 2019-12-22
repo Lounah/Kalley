@@ -9,12 +9,14 @@ import com.lounah.kalley.feature.feature_auth.domain.UsernameValidator
 import com.lounah.kalley.feature.feature_auth.ui.signin.AuthAction.*
 import com.lounah.kalley.feature.feature_auth.ui.signin.AuthEffect.*
 import io.reactivex.Observable
+import io.reactivex.rxkotlin.Observables
 import io.reactivex.rxkotlin.ofType
+import io.reactivex.rxkotlin.withLatestFrom
 import io.reactivex.rxkotlin.zipWith
 
 internal class ValidateCredentialsSideEff(
-    private val usernameValidator: (String) -> Boolean = UsernameValidator(),
-    private val passwordValidator: (String) -> Boolean = PasswordValidator()
+    private val usernameValidator: (String) -> Boolean,
+    private val passwordValidator: (String) -> Boolean
 ) : SideEff {
 
     private val validateUsername: (Observable<ReduxAction>) -> Observable<Boolean> = { actions ->
@@ -30,9 +32,8 @@ internal class ValidateCredentialsSideEff(
     override fun invoke(
         actions: Observable<ReduxAction>,
         state: StateAccessor<ReduxState>
-    ): Observable<out ReduxAction> {
-        return validateUsername(actions).zipWith(validatePassword(actions)) { usernameIsValid, passwordIsValid ->
-            ProceedAuthButtonStateChanged(usernameIsValid && passwordIsValid)
+    ): Observable<out ReduxAction> =
+        Observables.combineLatest(validateUsername(actions), validatePassword(actions)) { usernameIsValid, passwordIsValid ->
+            AuthButtonStateChanged(usernameIsValid, passwordIsValid)
         }
-    }
 }
