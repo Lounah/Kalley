@@ -5,30 +5,33 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-        <ImageView
-            android:id="@+id/close"
-            android:layout_marginStart="20dp"
-            android:layout_marginTop="16dp"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:background="?selectableItemBackgroundBorderless"
-            android:src="@drawable/ic_close_black_24dp" />
+    <ImageView
+        android:id="@+id/close"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="16dp"
+        android:background="?selectableItemBackgroundBorderless"
+        android:src="@drawable/ic_close_black_24dp"
+        tools:ignore="ContentDescription" />
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:paddingStart="20dp"
-            android:paddingTop="56dp"
-            android:text="@string/auth"
-            android:textColor="@color/black_soft"
-            android:textSize="24sp"
-            android:textStyle="bold" />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingStart="20dp"
+        android:paddingTop="56dp"
+        android:text="@string/auth"
+        android:textColor="@color/black_soft"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        tools:ignore="RtlSymmetry" />
 
     <LinearLayout
         android:id="@+id/inputContainer"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
+        android:animateLayoutChanges="true"
         android:orientation="vertical"
         android:padding="16dp"
         tools:ignore="UselessParent">
@@ -37,7 +40,7 @@
             android:id="@+id/username"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:backgroundTint="@color/black"
+            android:backgroundTint="@color/black_soft"
             android:hint="@string/username"
             android:importantForAutofill="no"
             android:inputType="textPersonName"
@@ -52,7 +55,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
-            android:backgroundTint="@color/black"
+            android:backgroundTint="@color/black_soft"
             android:hint="@string/password"
             android:importantForAutofill="no"
             android:inputType="textPassword"
@@ -70,7 +73,6 @@
             android:enabled="false"
             android:text="@string/log_in"
             android:textColor="@color/auth_button"
-            android:textStyle="bold"
             app:cornerRadius="4dp" />
 
         <ProgressBar
@@ -79,10 +81,10 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:backgroundTint="@color/black"
+            android:indeterminate="true"
             android:indeterminateTint="@color/black"
             android:paddingTop="16dp"
-            android:visibility="gone"
-            android:indeterminate="true" />
+            android:visibility="gone" />
 
     </LinearLayout>
 </FrameLayout>

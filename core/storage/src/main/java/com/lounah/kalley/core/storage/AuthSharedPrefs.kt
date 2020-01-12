@@ -15,12 +15,17 @@ class AuthSharedPrefs(
 
     fun saveDomain(domain: String): Completable =
         fromAction { putString(PREF_DOMAIN, domain) }
+
     fun saveUsername(username: String): Completable =
         fromAction { putString(PREF_USERNAME, username) }
+
     fun savePassword(password: String): Completable =
         fromAction { putString(PREF_PASSWORD, password) }
 
     fun getUsername() = getString(PREF_USERNAME)
     fun getPassword() = getString(PREF_PASSWORD)
     fun getDomain() = getString(PREF_DOMAIN)
+
+    fun isAuthorized(): Boolean =
+        getUsername() != null && getPassword() != null && getDomain() != null
 }

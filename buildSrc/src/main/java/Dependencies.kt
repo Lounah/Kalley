@@ -3,7 +3,7 @@ object ApplicationId {
 }
 
 object Modules {
-    const val app = ":app"
+    const val app = "::app"
     const val coreSip = ":core:sip"
     const val coreStorage = ":core:storage"
     const val coreDi = ":core:di"

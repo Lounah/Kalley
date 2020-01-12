@@ -8,5 +8,4 @@ import com.lounah.kalley.feature.feature_auth.domain.UsernameValidator
 internal val authModule = module {
     single { UsernameValidator() }
     single { PasswordValidator() }
-    single { AuthSharedPrefs(context = get("appContext")) }
 }
