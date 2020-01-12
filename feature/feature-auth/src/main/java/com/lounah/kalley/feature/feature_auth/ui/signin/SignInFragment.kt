@@ -23,12 +23,14 @@ internal class SignInFragment : BaseFragment(R.layout.fragment_signin) {
             },
             onAuthSucceed = {
                 progressBar.visibility = View.GONE
-            }
+            },
+            closeAuth = parentActivity::finish
         )
         val events = SignInEventsImpl(
             unbindEvent = unbindEvent,
             usernameChanged = username.textChanges(),
             passwordChanged = password.textChanges(),
+            closeAuth = close.clicks(),
             signInClicked = signIn.clicks()
         )
 

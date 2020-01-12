@@ -10,6 +10,8 @@ import io.reactivex.subjects.PublishSubject
 
 abstract class BaseFragment(@LayoutRes private val layout: Int) : Fragment() {
 
+    val parentActivity get() = activity ?: error("Parent activity is null.")
+
     val bindEvent = PublishSubject.create<Unit>()
     val unbindEvent = PublishSubject.create<Unit>()
     val resumeEvent = PublishSubject.create<Unit>()

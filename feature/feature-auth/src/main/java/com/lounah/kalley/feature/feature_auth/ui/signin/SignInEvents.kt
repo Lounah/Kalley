@@ -13,9 +13,11 @@ internal interface SignInEvents : BaseEvents {
     val passwordChanged: Observable<String>
     val signInClicked: Observable<Credentials>
     val credentialsChanged: Observable<Credentials>
+    val closeAuth: EventObservable
 }
 
 internal class SignInEventsImpl(override val unbindEvent: EventObservable,
+                                override val closeAuth: EventObservable,
                                 usernameChanged: Observable<CharSequence>,
                                 passwordChanged: Observable<CharSequence>,
                                 signInClicked: EventObservable) : SignInEvents {

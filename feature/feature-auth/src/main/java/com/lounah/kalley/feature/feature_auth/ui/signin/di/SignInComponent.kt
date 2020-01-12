@@ -10,12 +10,14 @@ import com.lounah.kalley.feature.feature_auth.ui.signin.SignInEventsBinder
 import com.lounah.kalley.feature.feature_auth.ui.signin.VerifyCredentialsActionCreator
 import ru.tinkoff.eba.actioncreators.Action
 import ru.tinkoff.eba.actioncreators.ActionMapper
+import ru.tinkoff.eba.actioncreators.toActionCreator
 
 internal class SignInComponent(
     private val changeSignInState: ActionMapper<Boolean>,
     private val showLoading: Action,
     private val showError: Action,
-    private val onAuthSucceed: Action
+    private val onAuthSucceed: Action,
+    private val closeAuth: Action
 ) {
 
     fun binder(): SignInEventsBinder {
@@ -27,7 +29,7 @@ internal class SignInComponent(
         val sendAuth = SendAuth(authSharedPrefs)
         val sendAuthActionCreator =
             SendAuthActionCreator(sendAuth, onAuthSucceed, showLoading, showError)
-
-        return SignInEventsBinder(verifyCredentials, sendAuthActionCreator)
+        val closeAuthActionCreator = closeAuth.toActionCreator()
+        return SignInEventsBinder(verifyCredentials, sendAuthActionCreator, closeAuthActionCreator)
     }
 }
