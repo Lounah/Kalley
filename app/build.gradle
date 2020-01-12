@@ -69,6 +69,7 @@ dependencies {
     implementation project(Modules.coreStorage)
     implementation project(Modules.coreSip)
     implementation project(Modules.featureAuth)
+    implementation project(Modules.featureCalls)
     implementation project(Modules.architecture)
 
     implementation Libraries.kotlin

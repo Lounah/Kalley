@@ -8,6 +8,7 @@ object Modules {
     const val coreStorage = ":core:storage"
     const val coreDi = ":core:di"
     const val featureAuth = ":feature:feature-auth"
+    const val featureCalls = ":feature:feature-calls"
     const val architecture = ":core:architecture"
 }
 

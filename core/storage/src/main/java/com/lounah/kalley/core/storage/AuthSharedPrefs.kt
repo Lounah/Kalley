@@ -1,7 +1,6 @@
-package com.lounah.kalley.feature.feature_auth.domain
+package com.lounah.kalley.core.storage
 
 import android.content.Context
-import com.lounah.kalley.core.storage.AbsSharedPrefs
 import io.reactivex.Completable
 import io.reactivex.Completable.*
 

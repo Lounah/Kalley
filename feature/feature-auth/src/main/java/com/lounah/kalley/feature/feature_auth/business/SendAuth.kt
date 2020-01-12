@@ -1,6 +1,6 @@
 package com.lounah.kalley.feature.feature_auth.business
 
-import com.lounah.kalley.feature.feature_auth.domain.AuthSharedPrefs
+import com.lounah.kalley.core.storage.AuthSharedPrefs
 import com.lounah.kalley.feature.feature_auth.ui.signin.Credentials
 import io.reactivex.Completable
 import java.util.concurrent.TimeUnit

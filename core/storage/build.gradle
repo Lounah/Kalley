@@ -3,4 +3,5 @@ apply plugin: "kotlin-kapt"
 
 dependencies {
     implementation SupportLibraries.appcompat
+    implementation Libraries.rxJava
 }

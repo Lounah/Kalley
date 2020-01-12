@@ -2,7 +2,7 @@ package com.lounah.kalley.feature.feature_auth.ui.signin.di
 
 import com.lounah.kalley.core.di.Di
 import com.lounah.kalley.feature.feature_auth.business.SendAuth
-import com.lounah.kalley.feature.feature_auth.domain.AuthSharedPrefs
+import com.lounah.kalley.core.storage.AuthSharedPrefs
 import com.lounah.kalley.feature.feature_auth.domain.PasswordValidator
 import com.lounah.kalley.feature.feature_auth.domain.UsernameValidator
 import com.lounah.kalley.feature.feature_auth.ui.signin.SendAuthActionCreator

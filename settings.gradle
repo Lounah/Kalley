@@ -2,5 +2,7 @@ include Modules.app,
         Modules.coreSip,
         Modules.architecture,
         Modules.featureAuth,
+        Modules.featureCalls,
         Modules.coreStorage,
         Modules.coreDi
+include ':common'

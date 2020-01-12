@@ -4,6 +4,7 @@ import android.app.Application
 import com.lounah.kalley.core.di.Di
 import com.lounah.kalley.core.di.module
 
+@Suppress("unused")
 class Kalley : Application() {
 
     override fun onCreate() {
