@@ -23,6 +23,7 @@ internal class SignInFragment : BaseFragment(R.layout.fragment_signin) {
             },
             onAuthSucceed = {
                 progressBar.visibility = View.GONE
+                startMainActivity()
             },
             closeAuth = parentActivity::finish
         )
@@ -35,5 +36,12 @@ internal class SignInFragment : BaseFragment(R.layout.fragment_signin) {
         )
 
         component.binder().bind(events)
+    }
+
+    private fun startMainActivity() {
+        parentActivity
+            .packageManager
+            .getLaunchIntentForPackage("com.lounah.kalley")
+            .also(::startActivity)
     }
 }
