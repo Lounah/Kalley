@@ -2,8 +2,8 @@ apply from: "$rootDir/common-android-library.gradle"
 apply plugin: "kotlin-kapt"
 
 dependencies {
-    api Libraries.rxRedux
-    api Libraries.rxRelay
+    api Libraries.eba
+    api Libraries.rxBinding
     implementation Libraries.rxAndroid
     implementation Libraries.rxJava
     implementation SupportLibraries.appcompat

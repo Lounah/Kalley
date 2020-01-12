@@ -34,6 +34,8 @@ object Versions {
     const val retrofit = "2.6.1"
     const val gson = "2.8.6"
     const val okhttp = "4.2.1"
+    const val eba = "1.0.0"
+    const val rxBinding = "3.1.0"
     const val constraintLayout = "2.0.0-beta4"
 }
 
@@ -48,6 +50,8 @@ object Libraries {
     const val gson = "com.google.code.gson:gson:${Versions.gson}"
     const val okhttp = "com.squareup.okhttp3:okhttp:${Versions.okhttp}"
     const val retrofit = "com.squareup.retrofit2:retrofit:${Versions.retrofit}"
+    const val eba = "ru.tinkoff.eba:EBA:${Versions.eba}"
+    const val rxBinding = "com.jakewharton.rxbinding3:rxbinding:${Versions.rxBinding}"
     const val constraintLayout = "androidx.constraintlayout:constraintlayout:${Versions.constraintLayout}"
 }
 

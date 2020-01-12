@@ -1,14 +1,13 @@
 package com.lounah.kalley.core.architecture.extensions
 
-import android.util.Log
-import com.lounah.kalley.core.architecture.redux.ReduxAction
-import com.lounah.kalley.core.architecture.redux.ReduxEffect
 import io.reactivex.*
 import io.reactivex.annotations.BackpressureKind
 import io.reactivex.annotations.BackpressureSupport
 import io.reactivex.annotations.CheckReturnValue
 import io.reactivex.annotations.SchedulerSupport
 import io.reactivex.disposables.Disposable
+import io.reactivex.subjects.BehaviorSubject
+import io.reactivex.subjects.Subject
 
 private val onNextStub: (Any) -> Unit = {}
 private val onErrorStub: (Throwable) -> Unit = {}
@@ -53,20 +52,42 @@ fun Completable.subscribeTo(
     onComplete: () -> Unit = onCompleteStub
 ): Disposable = subscribe(onComplete, onError)
 
-inline fun <reified T : ReduxEffect> Observable<T>.startWithAction(action: T): Observable<T>
-        = filter { it is T }.startWith(Observable.just<T>(action))
+fun <T> Completable.andJust(item: T): Observable<T> {
+    return andThen(Observable.just(item))
+}
 
-fun Completable.mapToAction(action: ReduxAction): Observable<ReduxAction>
-    = andThen(Observable.just(action))
+fun <T> Completable.map(block: () -> T): Observable<T> {
+    return andThen(Observable.fromCallable(block))
+}
 
-fun <T : ReduxEffect> Observable<ReduxAction>.mapToEffect(effect: T): Observable<T>
-        = map<T> { effect }
+fun Completable.andError(throwable: Throwable): Completable {
+    return andThen(Completable.error(throwable))
+}
 
-fun <T : ReduxEffect> Completable.mapToEffect(effect: T): Observable<T>
-        = toObservable<T>().map<T> { effect }
-//
-//fun <T : ReduxAction> Observable<T>.onErrorReturnEffect(effect: T): Observable<T>
-//        = onErrorResumeNext<T> { Observable.just<T>(effect) }
+fun <T> Completable.andSingleError(throwable: Throwable): Single<T> {
+    return andThen(Single.error(throwable))
+}
 
-fun Completable.onErrorReturnAction(action: ReduxAction): Observable<out ReduxAction>
-        = toObservable<ReduxAction>().onErrorReturnItem(action)
+fun <T> BehaviorSubject<T>.valueOrThrow(): T {
+    return value ?: throw IllegalStateException("subject value is null")
+}
+
+fun <T> Subject<T>.set(value: T) {
+    onNext(value)
+}
+
+fun emptyCompletable(): () -> Completable {
+    return Completable::complete
+}
+
+fun <T> emptyTypedCompletable(): (T) -> Completable {
+    return { Completable.complete() }
+}
+
+fun <T> T.justObservable(): Observable<T> {
+    return Observable.just(this)
+}
+
+fun <T> T.justSingle(): Single<T> {
+    return Single.just(this)
+}

@@ -5,37 +5,23 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <FrameLayout
-        android:layout_width="match_parent"
-        android:layout_height="56dp"
-        android:paddingStart="20dp">
-
         <ImageView
             android:id="@+id/close"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="16dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="center_vertical"
             android:src="@drawable/ic_close_black_24dp" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="center_vertical"
-            android:paddingStart="54dp"
+            android:paddingStart="20dp"
+            android:paddingTop="56dp"
             android:text="@string/auth"
             android:textColor="@color/black_soft"
             android:textSize="24sp"
             android:textStyle="bold" />
-
-    </FrameLayout>
-
-    <ProgressBar
-        android:id="@+id/progressBar"
-        style="@style/Widget.AppCompat.ProgressBar.Horizontal"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="56dp"
-        android:indeterminate="true" />
 
     <LinearLayout
         android:id="@+id/inputContainer"
@@ -50,29 +36,29 @@
             android:id="@+id/username"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:backgroundTint="@color/blue_accent"
+            android:backgroundTint="@color/black"
             android:hint="@string/username"
             android:importantForAutofill="no"
             android:inputType="textPersonName"
             android:nextFocusForward="@id/password"
             android:paddingTop="8dp"
             android:textColor="@color/black_soft"
-            android:textColorHint="@color/blue_flatten"
-            android:textSize="21sp" />
+            android:textColorHint="@color/gray"
+            android:textSize="18sp" />
 
         <EditText
             android:id="@+id/password"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
-            android:backgroundTint="@color/blue_accent"
+            android:backgroundTint="@color/black"
             android:hint="@string/password"
             android:importantForAutofill="no"
             android:inputType="textPassword"
             android:paddingTop="8dp"
             android:textColor="@color/black_soft"
-            android:textColorHint="@color/blue_flatten"
-            android:textSize="21sp" />
+            android:textColorHint="@color/gray"
+            android:textSize="18sp" />
 
         <Button
             android:id="@+id/signIn"
@@ -85,6 +71,17 @@
             android:textColor="@color/auth_button"
             android:textStyle="bold"
             app:cornerRadius="4dp" />
+
+        <ProgressBar
+            android:id="@+id/progressBar"
+            style="@style/Widget.AppCompat.ProgressBar.Horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:backgroundTint="@color/black"
+            android:indeterminateTint="@color/black"
+            android:paddingTop="16dp"
+            android:visibility="gone"
+            android:indeterminate="true" />
 
     </LinearLayout>
 </FrameLayout>
